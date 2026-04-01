@@ -64,32 +64,40 @@ const restorationPairs = [
     title: '1916 Waltham trench watch',
     beforeSrc: '/source-photos/brianbementwalt1-768x512.jpg',
     beforeAlt: '1916 Waltham trench watch before service',
+    beforePosition: '50% 52%',
     afterSrc: '/source-photos/brianbementwalt3-768x494.jpg',
     afterAlt: '1916 Waltham trench watch after service',
+    afterPosition: '50% 46%',
   },
   {
     id: 'hamilton',
     title: '1901 Hamilton 943',
     beforeSrc: '/source-photos/honey943-927before-768x512.jpg',
     beforeAlt: '1901 Hamilton 943 before service',
+    beforePosition: '50% 52%',
     afterSrc: '/source-photos/honey943ham2-768x512.jpg',
     afterAlt: '1901 Hamilton 943 after service',
+    afterPosition: '50% 50%',
   },
   {
     id: 'rockford',
     title: '1908 Rockford grade 835',
     beforeSrc: '/source-photos/honey1908rock1-768x512.jpg',
     beforeAlt: '1908 Rockford grade 835 before service',
+    beforePosition: '52% 56%',
     afterSrc: '/source-photos/honey1908rock3-768x512.jpg',
     afterAlt: '1908 Rockford grade 835 after service',
+    afterPosition: '52% 54%',
   },
   {
     id: 'seth-thomas',
     title: '1902 Seth Thomas pocket watch',
     beforeSrc: '/source-photos/keithchevseththomas1-768x512.jpg',
     beforeAlt: '1902 Seth Thomas pocket watch before service',
+    beforePosition: '54% 51%',
     afterSrc: '/source-photos/keithchevseththomas10-768x512.jpg',
     afterAlt: '1902 Seth Thomas pocket watch after overhaul',
+    afterPosition: '53% 50%',
   },
 ]
 
@@ -244,6 +252,7 @@ function App() {
                   height="512"
                   loading="eager"
                   decoding="async"
+                  style={{ objectPosition: '50% 52%' }}
                 />
                 <img
                   src="/source-photos/brianbementwalt3-768x494.jpg"
@@ -252,6 +261,7 @@ function App() {
                   height="494"
                   loading="eager"
                   decoding="async"
+                  style={{ objectPosition: '50% 46%' }}
                 />
               </figure>
             </aside>
@@ -277,8 +287,9 @@ function App() {
               <p>Everything below reflects currently published service and shipping terms.</p>
             </div>
             <div className="service-grid">
-              {serviceCards.map((item) => (
+              {serviceCards.map((item, index) => (
                 <article className="service-card reveal" key={item.title}>
+                  <span className="service-chip">{String(index + 1).padStart(2, '0')}</span>
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
                 </article>
@@ -327,6 +338,7 @@ function App() {
                         height="512"
                         loading="eager"
                         decoding="async"
+                        style={{ objectPosition: pair.beforePosition }}
                       />
                       <figcaption>Before</figcaption>
                     </figure>
@@ -338,6 +350,7 @@ function App() {
                         height="512"
                         loading="eager"
                         decoding="async"
+                        style={{ objectPosition: pair.afterPosition }}
                       />
                       <figcaption>After</figcaption>
                     </figure>

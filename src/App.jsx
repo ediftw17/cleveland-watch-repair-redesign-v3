@@ -251,7 +251,10 @@ function App() {
               </ul>
             </div>
 
-            <aside className="hero-panel reveal reveal-delay" aria-label="Contact and terms snapshot">
+            <aside
+              className="hero-panel reveal reveal-delay animated-border"
+              aria-label="Contact and terms snapshot"
+            >
               <h2>Published contact and terms</h2>
 
               <dl className="term-list">
@@ -298,7 +301,7 @@ function App() {
         <section className="metrics section-transition" aria-label="Service metrics">
           <div className="container metrics-grid">
             {metrics.map((item) => (
-              <article className="metric-card reveal" key={item.label}>
+              <article className="metric-card reveal animated-border" key={item.label}>
                 <p className="metric-value">{item.value}</p>
                 <p className="metric-label">{item.label}</p>
               </article>
@@ -315,7 +318,7 @@ function App() {
             </div>
             <div className="service-grid">
               {serviceCards.map((item, index) => (
-                <article className="service-card reveal" key={item.title}>
+                <article className="service-card reveal animated-border" key={item.title}>
                   <span className="service-chip">{String(index + 1).padStart(2, '0')}</span>
                   <h3>{item.title}</h3>
                   <p>{item.detail}</p>
@@ -337,7 +340,7 @@ function App() {
             </div>
             <ol className="process-grid">
               {processSteps.map((step, index) => (
-                <li className="process-card reveal" key={step.title}>
+                <li className="process-card reveal animated-border" key={step.title}>
                   <p className="step-num" aria-hidden="true">
                     {index + 1}
                   </p>
@@ -358,7 +361,7 @@ function App() {
 
             <div className="pair-grid">
               {restorationPairs.map((pair) => (
-                <article className="pair-card reveal" key={pair.id}>
+                <article className="pair-card reveal animated-border" key={pair.id}>
                   <h3>{pair.title}</h3>
                   <div className="pair-images">
                     <figure>
@@ -405,7 +408,10 @@ function App() {
 
             <div className="review-grid">
               {reviews.map((review) => (
-                <article className="review-card reveal" key={`${review.author}-${review.date}`}>
+                <article
+                  className="review-card reveal animated-border"
+                  key={`${review.author}-${review.date}`}
+                >
                   <p className="stars" aria-label="5 out of 5 stars">
                     ★★★★★
                   </p>
@@ -428,7 +434,7 @@ function App() {
 
             <div className="faq-grid">
               {faqs.map((faq) => (
-                <details className="faq-item reveal" key={faq.question}>
+                <details className="faq-item reveal animated-border" key={faq.question}>
                   <summary>{faq.question}</summary>
                   <p>{faq.answer}</p>
                 </details>
@@ -451,7 +457,10 @@ function App() {
               </a>
             </div>
 
-            <aside className="contact-card reveal reveal-delay" aria-label="Mailing details">
+            <aside
+              className="contact-card reveal reveal-delay animated-border"
+              aria-label="Mailing details"
+            >
               <h3>Mailing details</h3>
               <p>
                 <strong>Email:</strong>{' '}

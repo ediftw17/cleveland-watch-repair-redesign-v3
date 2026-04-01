@@ -656,6 +656,60 @@
   text-underline-offset: 3px;
 }
 
+.animated-border {
+  position: relative;
+  isolation: isolate;
+}
+
+.animated-border::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    conic-gradient(
+      from 0deg,
+      rgba(44, 147, 231, 0.2),
+      rgba(145, 192, 245, 0.48),
+      rgba(41, 139, 224, 0.18),
+      rgba(44, 147, 231, 0.2)
+    );
+  pointer-events: none;
+  opacity: 0.5;
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: border-spin 8s linear infinite;
+}
+
+.animated-border:hover::after {
+  opacity: 0.9;
+}
+
+.service-card:nth-child(2)::after,
+.pair-card:nth-child(2)::after,
+.review-card:nth-child(2)::after,
+.faq-item:nth-child(2)::after {
+  animation-delay: -1.7s;
+}
+
+.service-card:nth-child(3)::after,
+.pair-card:nth-child(3)::after,
+.review-card:nth-child(3)::after,
+.faq-item:nth-child(3)::after {
+  animation-delay: -3.1s;
+}
+
+.service-card:nth-child(4)::after,
+.pair-card:nth-child(4)::after,
+.review-card:nth-child(4)::after,
+.faq-item:nth-child(4)::after {
+  animation-delay: -4.6s;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(14px);
@@ -727,6 +781,37 @@
 
   50% {
     background-position: 100% 50%;
+  }
+}
+
+@keyframes border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@supports not ((-webkit-mask-composite: xor) or (mask-composite: exclude)) {
+  .animated-border::after {
+    display: none;
+  }
+
+  .animated-border {
+    animation: border-fallback 4s ease-in-out infinite;
+  }
+
+  @keyframes border-fallback {
+    0%,
+    100% {
+      border-color: rgba(143, 178, 227, 0.4);
+    }
+
+    50% {
+      border-color: rgba(45, 147, 231, 0.7);
+    }
   }
 }
 
@@ -842,5 +927,9 @@
   .section-transition {
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .animated-border::after {
+    animation: none !important;
   }
 }

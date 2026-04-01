@@ -189,7 +189,14 @@ function App() {
     )
 
     animatedNodes.forEach((node) => observer.observe(node))
-    return () => observer.disconnect()
+    const failSafeReveal = window.setTimeout(() => {
+      animatedNodes.forEach((node) => node.classList.add('is-visible'))
+    }, 1400)
+
+    return () => {
+      observer.disconnect()
+      window.clearTimeout(failSafeReveal)
+    }
   }, [])
 
   return (

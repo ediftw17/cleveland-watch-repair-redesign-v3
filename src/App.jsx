@@ -325,7 +325,7 @@ function App() {
                         alt={pair.beforeAlt}
                         width="768"
                         height="512"
-                        loading="lazy"
+                        loading="eager"
                         decoding="async"
                       />
                       <figcaption>Before</figcaption>
@@ -336,7 +336,7 @@ function App() {
                         alt={pair.afterAlt}
                         width="768"
                         height="512"
-                        loading="lazy"
+                        loading="eager"
                         decoding="async"
                       />
                       <figcaption>After</figcaption>

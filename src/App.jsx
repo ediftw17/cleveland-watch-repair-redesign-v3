@@ -1,4 +1,5 @@
 import './App.css'
+import { useEffect } from 'react'
 
 const metrics = [
   { value: '$249-$495+', label: 'Mechanical overhaul range' },
@@ -165,6 +166,32 @@ const schema = {
 }
 
 function App() {
+  useEffect(() => {
+    const animatedNodes = document.querySelectorAll('.reveal, .section-transition')
+
+    if (!('IntersectionObserver' in window)) {
+      animatedNodes.forEach((node) => node.classList.add('is-visible'))
+      return
+    }
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (!entry.isIntersecting) return
+          entry.target.classList.add('is-visible')
+          observer.unobserve(entry.target)
+        })
+      },
+      {
+        threshold: 0.18,
+        rootMargin: '0px 0px -8% 0px',
+      },
+    )
+
+    animatedNodes.forEach((node) => observer.observe(node))
+    return () => observer.disconnect()
+  }, [])
+
   return (
     <div className="site" id="top">
       <script
@@ -198,7 +225,7 @@ function App() {
       </header>
 
       <main id="main-content">
-        <section className="hero" aria-labelledby="hero-title">
+        <section className="hero section-transition" aria-labelledby="hero-title">
           <div className="container hero-grid">
             <div className="hero-copy reveal">
               <p className="eyebrow">Mechanical wristwatch and pocket watch overhaul</p>
@@ -268,7 +295,7 @@ function App() {
           </div>
         </section>
 
-        <section className="metrics" aria-label="Service metrics">
+        <section className="metrics section-transition" aria-label="Service metrics">
           <div className="container metrics-grid">
             {metrics.map((item) => (
               <article className="metric-card reveal" key={item.label}>
@@ -279,7 +306,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section" id="services" aria-labelledby="services-title">
+        <section className="section section-transition" id="services" aria-labelledby="services-title">
           <div className="container">
             <div className="section-head reveal">
               <p className="section-tag">Services</p>
@@ -298,7 +325,11 @@ function App() {
           </div>
         </section>
 
-        <section className="section section-dark" id="process" aria-labelledby="process-title">
+        <section
+          className="section section-dark section-transition"
+          id="process"
+          aria-labelledby="process-title"
+        >
           <div className="container">
             <div className="section-head section-head-dark reveal">
               <p className="section-tag">How it works</p>
@@ -318,7 +349,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section" id="work" aria-labelledby="work-title">
+        <section className="section section-transition" id="work" aria-labelledby="work-title">
           <div className="container">
             <div className="section-head reveal">
               <p className="section-tag">Recent work photos</p>
@@ -336,7 +367,7 @@ function App() {
                         alt={pair.beforeAlt}
                         width="768"
                         height="512"
-                        loading="eager"
+                        loading="lazy"
                         decoding="async"
                         style={{ objectPosition: pair.beforePosition }}
                       />
@@ -348,7 +379,7 @@ function App() {
                         alt={pair.afterAlt}
                         width="768"
                         height="512"
-                        loading="eager"
+                        loading="lazy"
                         decoding="async"
                         style={{ objectPosition: pair.afterPosition }}
                       />
@@ -361,7 +392,11 @@ function App() {
           </div>
         </section>
 
-        <section className="section section-soft" id="reviews" aria-labelledby="reviews-title">
+        <section
+          className="section section-soft section-transition"
+          id="reviews"
+          aria-labelledby="reviews-title"
+        >
           <div className="container">
             <div className="section-head reveal">
               <p className="section-tag">Reviews</p>
@@ -384,7 +419,7 @@ function App() {
           </div>
         </section>
 
-        <section className="section" aria-labelledby="faq-title">
+        <section className="section section-transition" aria-labelledby="faq-title">
           <div className="container">
             <div className="section-head reveal">
               <p className="section-tag">FAQ</p>
@@ -402,7 +437,7 @@ function App() {
           </div>
         </section>
 
-        <section className="contact" id="contact" aria-labelledby="contact-title">
+        <section className="contact section-transition" id="contact" aria-labelledby="contact-title">
           <div className="container contact-grid">
             <div className="contact-copy reveal">
               <p className="section-tag section-tag-light">Contact</p>

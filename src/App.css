@@ -732,11 +732,14 @@
 
 .section-transition {
   opacity: 0;
-  transform: translateY(18px);
+  transform: translate3d(0, 56px, 0) scale(1.06);
+  transform-origin: 50% 100%;
+  filter: blur(7px);
+  will-change: transform, opacity, filter;
 }
 
 .section-transition.is-visible {
-  animation: section-enter 0.68s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: section-enter 0.82s cubic-bezier(0.19, 1, 0.22, 1) both;
 }
 
 @keyframes enter {
@@ -754,12 +757,20 @@
 @keyframes section-enter {
   from {
     opacity: 0;
-    transform: translateY(18px);
+    transform: translate3d(0, 56px, 0) scale(1.08);
+    filter: blur(8px);
+  }
+
+  62% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(0.996);
+    filter: blur(1px);
   }
 
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate3d(0, 0, 0) scale(1);
+    filter: blur(0);
   }
 }
 
@@ -931,6 +942,7 @@
   .section-transition {
     opacity: 1 !important;
     transform: none !important;
+    filter: none !important;
   }
 
   .animated-border::after {

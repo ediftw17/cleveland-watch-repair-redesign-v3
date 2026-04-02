@@ -183,20 +183,13 @@ function App() {
         })
       },
       {
-        threshold: 0.18,
-        rootMargin: '0px 0px -8% 0px',
+        threshold: 0.14,
+        rootMargin: '0px 0px -6% 0px',
       },
     )
 
     animatedNodes.forEach((node) => observer.observe(node))
-    const failSafeReveal = window.setTimeout(() => {
-      animatedNodes.forEach((node) => node.classList.add('is-visible'))
-    }, 1400)
-
-    return () => {
-      observer.disconnect()
-      window.clearTimeout(failSafeReveal)
-    }
+    return () => observer.disconnect()
   }, [])
 
   return (
